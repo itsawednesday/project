@@ -32,4 +32,29 @@ public class PodcastEntity {
     private String author;
 
     private String itunes_id;
+
+    public PodcastEntity (String uuid) {
+        this.uuid = uuid;
+    }
+    public PodcastEntity() {}
+
+    public String getUuid() {
+        return uuid;
+    }
+    public String getAuthor(){
+        return author;
+    }
+    public String getTitle() {
+        return title;
+    }
+    public void setUuid(String uuid){
+        this.uuid = uuid;
+    }
+    public void setTitle(String title){
+        this.title = title;
+    }
+    public void setAuthor(String author){
+        this.author= author;
+    }
+
 }
