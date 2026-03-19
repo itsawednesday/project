@@ -1,6 +1,6 @@
 package com.example.project.service;
 
-import com.example.project.db.PodcastRepository;
+import com.example.project.repository.PodcastRepository;
 import com.example.project.entity.PodcastEntity;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,25 +51,25 @@ public class PodcastService {
         return entity;
     }
 
-    public PodcastEntity updaterPodcast(PodcastEntity entity) {
-        Optional<PodcastEntity> currentPodcast = podcastRepository.findByUuid(entity.getUuid());
-        //om podcast finns i databasen
-        if (currentPodcast.isPresent()) {
-            PodcastEntity update = currentPodcast.get();
-            //updatera gamla podcasten med nya uuid
-            update.setUuid(update.getUuid());
-            update.setTitle(update.getTitle());
-            update.setAuthor(update.getAuthor());
+//    public PodcastEntity updaterPodcast(PodcastEntity entity) {
+//        Optional<PodcastEntity> currentPodcast = podcastRepository.findByUuid(entity.getUuid());
+//        //om podcast finns i databasen
+//        if (currentPodcast.isPresent()) {
+//            PodcastEntity update = currentPodcast.get();
+//            //updatera gamla podcasten med nya uuid
+//            update.setUuid(update.getUuid());
+//            update.setTitle(update.getTitle());
+//            update.setAuthor(update.getAuthor());
+//
+//            podcastRepository.save(update);
+//            return update;
+//        }
+//        return null;
+//    }
 
-            podcastRepository.save(update);
-            return update;
-        }
-        return null;
-    }
-
-    @Transactional
-    public void deletePodcast (String podcast) {
-        podcastRepository.deleteByUuid(podcast);
-    }
+//    @Transactional
+//    public void deletePodcast (String podcast) {
+//        podcastRepository.deleteByUuid(podcast);
+//    }
 
 }

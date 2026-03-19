@@ -42,20 +42,16 @@ public class PodcastController {
         return new ResponseEntity<>(createPodcast, HttpStatus.CREATED);
     }
 
-    @PutMapping
-    public ResponseEntity<PodcastEntity> update(@RequestBody PodcastEntity podcast) {
-        PodcastEntity update = podcastService.updaterPodcast(podcast);
-        if (podcast != null) {
+//    @PutMapping
+//    public ResponseEntity<PodcastEntity> update(@RequestBody PodcastEntity podcast) {
+//        PodcastEntity update = podcastService.updaterPodcast(podcast);
+//
+//        return new ResponseEntity<>(update, HttpStatus.OK);
+//	}
 
-            return new ResponseEntity<>(update, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-
-    @DeleteMapping("/{podcast}")
-    public ResponseEntity <String> deletePodcast(@PathVariable String podcast) {
-        podcastService.deletePodcast(podcast);
-        return new ResponseEntity<>("Podcast deleted.", HttpStatus.OK);
-    }
+//    @DeleteMapping("/{podcast}")
+//    public ResponseEntity <String> deletePodcast(@PathVariable String podcast) {
+//        podcastService.deletePodcast(podcast);
+//        return new ResponseEntity<>("Podcast deleted.", HttpStatus.OK);
+//    }
 }

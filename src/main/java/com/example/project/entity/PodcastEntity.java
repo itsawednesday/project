@@ -10,35 +10,29 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table(name = "podcast_media")
+@Table(name = "podcast")
 public class PodcastEntity {
 
     @Id
     @Column(name = "uuid", unique = true)
-    private String uuid;
+    private Long uuid;
 
+    @Column(name = "title")
     private String title;
+    
+    @Column(name = "category")
+    private String category;
 
-    private String image;
-
-    private String description;
-
-    private String languages;
-
-    private String categories;
-
-    private String website;
-
+    @Column(name = "author")
     private String author;
 
-    private String itunes_id;
 
-    public PodcastEntity (String uuid) {
+    public PodcastEntity (Long uuid) {
         this.uuid = uuid;
     }
     public PodcastEntity() {}
 
-    public String getUuid() {
+    public Long getUuid() {
         return uuid;
     }
     public String getAuthor(){
@@ -47,7 +41,10 @@ public class PodcastEntity {
     public String getTitle() {
         return title;
     }
-    public void setUuid(String uuid){
+    public String getCategory() {
+        return category;
+    }
+    public void setUuid(Long uuid){
         this.uuid = uuid;
     }
     public void setTitle(String title){
@@ -57,4 +54,7 @@ public class PodcastEntity {
         this.author= author;
     }
 
+    public void setCategory(String category) {
+        this.category = category;
+    }
 }
