@@ -26,7 +26,7 @@ public class PodcastService {
 
 
     //få ut podcasts från en specifik uuid
-    public List<PodcastEntity> getPodcastByUuid(String podcastUuid) {
+    public List<PodcastEntity> getPodcastByUuid(Long podcastUuid) {
         return podcastRepository.findAll()
                 .stream()
                 .filter(podcast -> podcastUuid.equals(podcast.getUuid()))
@@ -51,25 +51,25 @@ public class PodcastService {
         return entity;
     }
 
-//    public PodcastEntity updaterPodcast(PodcastEntity entity) {
-//        Optional<PodcastEntity> currentPodcast = podcastRepository.findByUuid(entity.getUuid());
-//        //om podcast finns i databasen
-//        if (currentPodcast.isPresent()) {
-//            PodcastEntity update = currentPodcast.get();
-//            //updatera gamla podcasten med nya uuid
-//            update.setUuid(update.getUuid());
-//            update.setTitle(update.getTitle());
-//            update.setAuthor(update.getAuthor());
-//
-//            podcastRepository.save(update);
-//            return update;
-//        }
-//        return null;
-//    }
+    public PodcastEntity updaterPodcast(PodcastEntity entity) {
+        Optional<PodcastEntity> currentPodcast = podcastRepository.findById(entity.getUuid());
+        //om podcast finns i databasen
+        if (currentPodcast.isPresent()) {
+            PodcastEntity update = currentPodcast.get();
+            //updatera gamla podcasten med nya uuid
+            update.setUuid(update.getUuid());
+            update.setTitle(update.getTitle());
+            update.setAuthor(update.getAuthor());
 
-//    @Transactional
-//    public void deletePodcast (String podcast) {
-//        podcastRepository.deleteByUuid(podcast);
-//    }
+            podcastRepository.save(update);
+            return update;
+        }
+        return null;
+    }
+
+    @Transactional
+    public void deletePodcast (Long uuid) {
+        podcastRepository.deleteById(uuid);
+    }
 
 }
