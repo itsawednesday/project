@@ -1,8 +1,8 @@
 package com.example.project.web.rest;
 
 import com.example.project.entity.PodcastEntity;
+import com.example.project.kafka.KafkaProducer;
 import com.example.project.service.PodcastService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,9 +15,18 @@ public class PodcastController {
 
     private final PodcastService podcastService;
 
-    @Autowired
-    public PodcastController(PodcastService podcastService) {
+    private final KafkaProducer kafkaProducer;
+
+    //Porva att skriva ett meddelande på insomnia
+    @PostMapping("/publish")
+    public void writeMessageToTopic(@RequestParam("message") String message) {
+        this.kafkaProducer.writeMessage((message));
+
+    }
+
+    public PodcastController(PodcastService podcastService, KafkaProducer kafkaProducer) {
         this.podcastService = podcastService;
+        this.kafkaProducer = kafkaProducer;
     }
     @GetMapping("/{uuid}")
     public List<PodcastEntity> getPodcastById(@PathVariable Long uuid) {

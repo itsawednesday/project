@@ -1,5 +1,6 @@
 package com.example.project.service;
 
+import com.example.project.kafka.KafkaProducer;
 import com.example.project.repository.PodcastRepository;
 import com.example.project.entity.PodcastEntity;
 import jakarta.transaction.Transactional;
@@ -13,11 +14,11 @@ import java.util.stream.Collectors;
 @Service
 public class PodcastService {
     private final PodcastRepository podcastRepository;
+    private final KafkaProducer kafkaProducer;
 
-    @Autowired
-    public PodcastService(PodcastRepository podcastRepository) {
-
+    public PodcastService(PodcastRepository podcastRepository, KafkaProducer kafkaProducer) {
         this.podcastRepository = podcastRepository;
+        this.kafkaProducer = kafkaProducer;
     }
 
     public List<PodcastEntity> getPodcasts() {
@@ -47,7 +48,8 @@ public class PodcastService {
                 .collect(Collectors.toList());
     }
     public PodcastEntity addPostcast(PodcastEntity entity) {
-        podcastRepository.save(entity);
+        var saved = podcastRepository.save(entity);
+        kafkaProducer.writeMessage("CREATED PODCAST: " + saved.getUuid());
         return entity;
     }
 
@@ -61,7 +63,8 @@ public class PodcastService {
             update.setTitle(update.getTitle());
             update.setAuthor(update.getAuthor());
 
-            podcastRepository.save(update);
+           var updated = podcastRepository.save(update);
+           kafkaProducer.writeMessage("UPDATED PODCAST: " + updated.getUuid());
             return update;
         }
         return null;
@@ -70,6 +73,7 @@ public class PodcastService {
     @Transactional
     public void deletePodcast (Long uuid) {
         podcastRepository.deleteById(uuid);
+        kafkaProducer.writeMessage("DELETED PODCAST: " + uuid);
     }
 
 }
