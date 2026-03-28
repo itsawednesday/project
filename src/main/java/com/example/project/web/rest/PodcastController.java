@@ -17,7 +17,7 @@ public class PodcastController {
 
     private final KafkaProducer kafkaProducer;
 
-    //Porva att skriva ett meddelande på insomnia
+    //Porva att skriva ett meddelande på postman
     @PostMapping("/publish")
     public void writeMessageToTopic(@RequestParam("message") String message) {
         this.kafkaProducer.writeMessage((message));
