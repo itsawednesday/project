@@ -4,7 +4,6 @@ import com.example.project.kafka.KafkaProducer;
 import com.example.project.repository.PodcastRepository;
 import com.example.project.entity.PodcastEntity;
 import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -74,6 +73,8 @@ public class PodcastService {
     public void deletePodcast (Long uuid) {
         podcastRepository.deleteById(uuid);
         kafkaProducer.writeMessage("DELETED PODCAST: " + uuid);
+    
+        
     }
 
 }
