@@ -1,6 +1,5 @@
-package com.example.project.kafka;
+package com.example.minaPoddar.kafka;
 
-import jdk.swing.interop.SwingInterOpUtils;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 

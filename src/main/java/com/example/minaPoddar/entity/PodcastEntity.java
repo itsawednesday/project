@@ -1,4 +1,4 @@
-package com.example.project.entity;
+package com.example.minaPoddar.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -15,6 +15,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "podcast")
 public class PodcastEntity {
 
@@ -31,36 +32,4 @@ public class PodcastEntity {
 
     @Column(name = "author")
     private String author;
-
-
-    public PodcastEntity (Long uuid) {
-        this.uuid = uuid;
-    }
-    public PodcastEntity() {}
-
-    public Long getUuid() {
-        return uuid;
-    }
-    public String getAuthor(){
-        return author;
-    }
-    public String getTitle() {
-        return title;
-    }
-    public String getCategory() {
-        return category;
-    }
-    public void setUuid(Long uuid){
-        this.uuid = uuid;
-    }
-    public void setTitle(String title){
-        this.title = title;
-    }
-    public void setAuthor(String author){
-        this.author= author;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
 }

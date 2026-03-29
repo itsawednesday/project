@@ -1,9 +1,9 @@
-package com.example.project;
+package com.example.minaPoddar;
 
-import com.example.project.entity.PodcastEntity;
-import com.example.project.kafka.KafkaProducer;
-import com.example.project.repository.PodcastRepository;
-import com.example.project.service.PodcastService;
+import com.example.minaPoddar.entity.PodcastEntity;
+import com.example.minaPoddar.kafka.KafkaProducer;
+import com.example.minaPoddar.repository.PodcastRepository;
+import com.example.minaPoddar.service.PodcastService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

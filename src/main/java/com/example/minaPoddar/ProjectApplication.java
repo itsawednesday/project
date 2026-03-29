@@ -1,4 +1,4 @@
-package com.example.project;
+package com.example.minaPoddar;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

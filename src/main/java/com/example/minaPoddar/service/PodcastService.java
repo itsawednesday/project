@@ -1,8 +1,8 @@
-package com.example.project.service;
+package com.example.minaPoddar.service;
 
-import com.example.project.kafka.KafkaProducer;
-import com.example.project.repository.PodcastRepository;
-import com.example.project.entity.PodcastEntity;
+import com.example.minaPoddar.kafka.KafkaProducer;
+import com.example.minaPoddar.repository.PodcastRepository;
+import com.example.minaPoddar.entity.PodcastEntity;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 

@@ -1,8 +1,8 @@
-package com.example.project.web.rest;
+package com.example.minaPoddar.web.rest;
 
-import com.example.project.entity.PodcastEntity;
-import com.example.project.kafka.KafkaProducer;
-import com.example.project.service.PodcastService;
+import com.example.minaPoddar.entity.PodcastEntity;
+import com.example.minaPoddar.kafka.KafkaProducer;
+import com.example.minaPoddar.service.PodcastService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
